@@ -18,7 +18,7 @@ To get started with this application:
 
 Earthquake Visualizer is an interactive application designed to provide insights into recent earthquake activity across the globe. Leveraging the publicly available USGS API, it displays earthquake data on an intuitive map interface.
 
- - Nelify : [https://earvi.netlify.app/](https://earvi.netlify.app/)
+ - Netlify : [https://earvi.netlify.app/](https://earvi.netlify.app/)
 
 ### Features:
 - **Comprehensive Data**: View details such as magnitude, location, depth, and time of occurrence for recent earthquakes.
