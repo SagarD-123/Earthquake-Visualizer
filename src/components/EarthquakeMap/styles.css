@@ -1,0 +1,285 @@
+.map-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #333;
+    background-color: #f5f6fa;
+  }
+  
+  .popup-content {
+    padding: 10px;
+  }
+  
+  .popup-content h3 {
+    margin: 0 0 10px 0;
+    color: #2d3436;
+    font-size: 16px;
+  }
+  
+  .popup-content p {
+    margin: 5px 0;
+    color: #636e72;
+    font-size: 14px;
+  }
+  
+  /* Add smooth scrollbar styling */
+  .overflow-y-auto {
+    scrollbar-width: thin;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: rgb(243 244 246);
+  }
+  
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background: rgb(209 213 219);
+    border-radius: 3px;
+  }
+  
+  .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: rgb(156 163 175);
+  }
+  
+  /* Ensure components stay on top of the map */
+  .map-overlay {
+    position: absolute;
+    z-index: 1000;
+  }
+  
+  .map-overlay.top-left {
+    top: 8px;
+    left: 8px;
+  }
+  
+  .map-overlay.top-right {
+    top: 8px;
+    right: 8px;
+  }
+  
+  .map-overlay.bottom-left {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    width: auto;
+    max-width: 300px;
+  }
+  
+  .map-overlay.bottom-right {
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  /* @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  } */
+  
+  .selected-marker {
+    /* animation: pulse 1.5s  ease-in-out 1; */
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+  
+  .selected-marker path {
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+  
+  .filter-group {
+    background-color: #f8fafc;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .filter-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .filter-group select {
+    background-color: white;
+  }
+  
+  /* Add these new styles */
+  .filter-group select {
+    @apply w-full px-3 py-2 text-sm border border-gray-200/50 rounded-lg 
+           bg-white/70 backdrop-blur-sm
+           focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/30
+           transition-all duration-300;
+  }
+  
+  .filter-group select:hover {
+    @apply border-blue-300/50 bg-white/80;
+  }
+  
+  /* Enhanced scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-200/80 hover:bg-gray-300/80 
+           rounded-full backdrop-blur-sm
+           transition-colors duration-300;
+  }
+  
+  /* Base styles */
+  :root {
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%);
+  }
+  
+  /* Enhanced animations */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+    100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.2); }
+  }
+  
+  /* Component styles */
+  .stats-card {
+    animation: float 6s ease-in-out infinite;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .earthquake-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .earthquake-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  /* Enhanced glassmorphism */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Gradient text animation */
+  @keyframes gradient-text {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .gradient-text {
+    background: linear-gradient(300deg, #6366f1, #3b82f6, #2dd4bf);
+    background-size: 200% auto;
+    animation: gradient-text 4s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Responsive Layout */
+  .responsive-container {
+    @apply flex flex-col lg:flex-row h-screen w-screen overflow-hidden;
+  }
+  
+  /* Mobile Sidebar */
+  .mobile-sidebar {
+    @apply fixed inset-y-0 left-0 z-50 w-full lg:w-96 
+           transform transition-transform duration-300 ease-in-out
+           lg:relative lg:transform-none;
+  }
+  
+  /* Mobile Overlay */
+  .mobile-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-40
+           transition-opacity duration-300 ease-in-out
+           lg:hidden;
+  }
+  
+  /* Responsive Map Overlays */
+  .map-overlay {
+    @apply absolute z-[1000];
+  }
+  
+  .map-overlay.top-right {
+    @apply top-2 right-2 md:top-8 md:right-8;
+  }
+  
+  .map-overlay.bottom-left {
+    @apply bottom-16 left-2 md:bottom-16 md:left-16
+           w-auto max-w-[calc(100vw-1rem)] md:max-w-sm;
+  }
+  
+  .map-overlay.bottom-right {
+    @apply bottom-2 right-2 md:bottom-8 md:right-8;
+  }
+  
+  /* Responsive Statistics Cards */
+  .stats-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3;
+  }
+  
+  /* Responsive Search Bar */
+  .search-container {
+    @apply w-full md:w-64 px-2 md:px-0;
+  }
+  
+  /* Responsive Legend */
+  .legend {
+    @apply hidden md:block;
+  }
+  
+  /* Mobile Toggle Button */
+  .mobile-toggle {
+    @apply fixed top-4 left-4 z-[1001] p-2 
+           bg-white rounded-lg shadow-lg
+           lg:hidden;
+  }
+  
+  /* Add these styles at the end of the file */
+  .loading-overlay {
+    @apply fixed inset-0 bg-black/20 backdrop-blur-sm 
+           flex items-center justify-center z-[9999]
+           transition-all duration-300 ease-in-out;
+  }
+  
+  .loading-overlay__content {
+    @apply bg-white/90 backdrop-blur-md rounded-2xl p-6 
+           shadow-xl max-w-sm mx-4 transform
+           transition-all duration-300 ease-in-out;
+  }
+  
+  .loading-overlay__spinner {
+    @apply animate-spin rounded-full h-12 w-12 
+           border-t-2 border-b-2 border-blue-500;
+  }
